@@ -6,3 +6,22 @@ body {
 a {
   color: #00B7FF;
 }
+
+
+.logo{
+  border-radius: 50%;
+  width: 5%;
+  height: 5%;
+  
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 34px;
+}
+
+.login img {
+  height: 30px;
+}
