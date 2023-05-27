@@ -1,17 +1,63 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0;
+  height: 100vh;
+  background-color: antiquewhite;
+  display: grid;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
 }
 
-a {
-  color: #00B7FF;
+footer {
+  position: relative;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 10%;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
+
+footer > a {
+  color: white;
+  margin: 10px;
 }
 
 
-.logo{
+main > h1{
+  text-align: center;
+  width: fit-content;
+  height: fit-content;
+}
+
+body > nav {
+  grid-area: nav;
+  background-color: #631414;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 20px 0 30px;
+}
+
+main{
+  display: flex;
+  margin: 10px;
+  border: 5px ridge #631414;
+  padding: 10px;
+}
+
+nav > a{
+  color: white;
+  margin: 10px;
+}
+
+nav > img{
   border-radius: 50%;
-  width: 5%;
-  height: 5%;
+  width: 40px;
+  height: 40px;
+  margin-left: auto;
   
 }
 
@@ -24,4 +70,17 @@ a {
 
 .login img {
   height: 30px;
+}
+
+#side{
+  border: 1px solid black;
+  width: 20%;
+  height: 20%;
+
+}
+
+#display{
+  border: 1px solid black;
+  width: 20%;
+  height: 20%;
 }
