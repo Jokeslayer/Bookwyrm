@@ -1,15 +1,17 @@
 <%- include('../partials/header') %>
 
-<form id="new-form" action="/books" method="POST">
-  <label>Title:</label>
-  <input type="text" name="title">
-  <label>Author:</label>
-  <input type="text" name="author">
-  <label>Release Year:</label>
-  <input type="text" name="releaseYear">
-  <label>Cover Art:</label>
-  <input type="text" name="coverURL">
-  <input type="submit" value="Add Book">
-</form>
+<div class="container">
+  <form id="new-form" action="/books" method="POST">
+    <label>Title:</label>
+    <input type="text" name="title">
+    <label>Author:</label>
+    <input type="text" name="author">
+    <label>Release Year:</label>
+    <input type="text" name="releaseYear">
+    <label>Cover Art Link:</label>
+    <input type="text" name="coverURL" placeholder="Enter of a URL leading to an image of the cover">
+    <input type="submit" value="Add Book">
+  </form>
+</div>
 
 <%- include('../partials/footer') %>

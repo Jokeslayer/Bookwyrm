@@ -9,6 +9,8 @@ router.get('/', booksCtrl.index);
 
 router.get('/about', booksCtrl.about);
 
+router.get('/mine', booksCtrl.mine);
+
 // GET /books/new
 router.get('/new', ensureLoggedIn, booksCtrl.new);
 

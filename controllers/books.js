@@ -5,12 +5,18 @@ module.exports = {
   index,
   new: newBook,
   create,
+  mine,
   about
 };
 
 async function index(req, res) {
   const books = await Book.find({});
-  res.render('books/index', { title: 'All Books', books });
+  res.render('books/index', { title: 'Welcome to the Hoard of the Bookwyrm',books});
+}
+
+async function mine(req, res) {
+  const books = await Book.find({});
+  res.render('books/mine', { title: 'Welcome to the Hoard of the Bookwyrm',books});
 }
 
 async function about(req, res) {
@@ -20,7 +26,7 @@ async function about(req, res) {
 function newBook(req, res) {
   // We'll want to be able to render an  
   // errorMsg if the create action fails
-  res.render('books/new', { title: 'Add Book', errorMsg: '' });
+  res.render('books/new', { title: 'I thank you for your contribution to my hoard', errorMsg: '' });
 }
 
 async function create(req, res) {

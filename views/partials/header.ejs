@@ -8,7 +8,7 @@
 </head>
 <body>
   <nav>
-    <img src="/images/logo.jpg">
+    <a href="/"><img id ="logo" src="/images/logo.jpg"></a>
     <a href="/books" <%- title === 'Full Catalog' ? 'class="active"' : '' %>>Full Catalog</a>
     <% if (user) { %>
       <a href="/books/mine" <%- title === 'Your Books' ? 'class="active"' : '' %>>Your Books</a>
@@ -19,3 +19,4 @@
     <% } %>
   </nav>
   <main>
+    <h1><%= title %></h1>
