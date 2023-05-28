@@ -6,6 +6,9 @@ const ensureLoggedIn = require('../config/ensureLoggedIn');
 	
 // GET /books
 router.get('/', booksCtrl.index);
+
+router.get('/about', booksCtrl.about);
+
 // GET /books/new
 router.get('/new', ensureLoggedIn, booksCtrl.new);
 

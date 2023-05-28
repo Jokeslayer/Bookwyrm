@@ -4,12 +4,17 @@ const Book = require('../models/book');
 module.exports = {
   index,
   new: newBook,
-  create
+  create,
+  about
 };
 
 async function index(req, res) {
   const books = await Book.find({});
   res.render('books/index', { title: 'All Books', books });
+}
+
+async function about(req, res) {
+  res.render('books/about', { title: 'Here I am! Rock you like a Hurricane!'});
 }
 
 function newBook(req, res) {

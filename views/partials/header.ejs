@@ -8,10 +8,10 @@
 </head>
 <body>
   <nav>
-    <img src="images/logo.jpg">
+    <img src="/images/logo.jpg">
     <a href="/books" <%- title === 'Full Catalog' ? 'class="active"' : '' %>>Full Catalog</a>
     <% if (user) { %>
-      <a href="books/mine" <%- title === 'Your Books' ? 'class="active"' : '' %>>Your Books</a>
+      <a href="/books/mine" <%- title === 'Your Books' ? 'class="active"' : '' %>>Your Books</a>
       <a href="/books/new" <%- title === 'Add Book' ? 'class="active"' : '' %>>Add Book</a>
       <a href="/logout">LOG OUT</a>
     <% } else { %>
