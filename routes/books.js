@@ -11,6 +11,8 @@ router.get('/about', booksCtrl.about);
 
 router.get('/mine', booksCtrl.mine);
 
+router.get('/:id', booksCtrl.show);
+
 // GET /books/new
 router.get('/new', ensureLoggedIn, booksCtrl.new);
 
