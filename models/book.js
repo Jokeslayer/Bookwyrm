@@ -29,6 +29,12 @@ const bookSchema = new Schema({
     rating: { type: Number},
     releaseYear: {type: Number},
     coverURL: { type: String},
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    userName: String,
+    userAvatar: String,
     reviews: [reviewSchema]
   }, {
     timestamps: true

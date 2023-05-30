@@ -15,7 +15,7 @@ async function index(req, res) {
 }
 
 async function mine(req, res) {
-  const books = await Book.find({});
+  const books = await Book.find({user: req.user._id});
   res.render('books/mine', { title: 'Welcome to the Hoard of the Bookwyrm',books});
 }
 
@@ -36,9 +36,14 @@ function newBook(req, res) {
 }
 
 async function create(req, res) {
+  req.body.user = req.user._id;
+  req.body.userName = req.user.name;
+  req.body.userAvatar = req.user.avatar;
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
   }
+
+
   try {
     // Update this line because now we need the _id of the new book
     const book = await Book.create(req.body);
@@ -46,6 +51,6 @@ async function create(req, res) {
   } catch (err) {
     // Typically some sort of validation error
     console.log(err);
-    res.render('books/new', {title: 'I thank you for your contribution to my hoard',errorMsg: err.message });
+    res.render('books/new', {title: 'Wait, Something is wrong!', errorMsg: err.message });
   }
 }

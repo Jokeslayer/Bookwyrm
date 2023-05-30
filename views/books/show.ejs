@@ -12,7 +12,16 @@
   action="/books/<%= book._id %>/reviews">
   <label>Review:</label>
   <textarea name="content"></textarea>
-  </select>
+</select>
+<script source ="javascripts/stars.js">
+<div class="rating">
+    <i class="rating__star far fa-star"></i>
+    <i class="rating__star far fa-star"></i>
+    <i class="rating__star far fa-star"></i>
+    <i class="rating__star far fa-star"></i>
+    <i class="rating__star far fa-star"></i>
+  </div>
+</script>
   <input type="submit" value="Add Review">
 </form>
 
@@ -54,5 +63,4 @@
 <% } else { %>
   <h5>No Reviews Yet</h5>
 <% } %>
-  
 <%- include('../partials/footer') %>
