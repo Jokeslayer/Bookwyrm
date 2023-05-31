@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+
+    <form action="/books/<%= book.id %>?_method=PUT" method="POST">
+        <div class="option">
+            <p>Update Title: </p><input type="text" name="title"><br>
+            <p>Update Author: </p><input type="text" name="author"><br>
+            <p>Update Release Date: </p><input type="Number" name="releaseYear"><br>
+            <p>Update Genre: </p><input type="text" name="book"><br>
+            <p>Update Cover Art URL: </p><input type="text" name="book"><br>
+        </div>
+        <p>Update proficiency level: </p><input type="text" name="proficiency" value="<%= book.proficiency %>"><br>
+        <label>
+            <input type="checkbox" name="done" <%=book.done ? 'checked' : '' %>>
+            Completed
+        </label><br>
+        <button type="submit">Update Book level</button>
+    </form>
+
+<%- include('../partials/footer') %>

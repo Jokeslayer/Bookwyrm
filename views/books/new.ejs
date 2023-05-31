@@ -1,17 +1,26 @@
 <%- include('../partials/header') %>
 
-<div class="container">
-  <form id="new-form" action="/books" method="POST">
-    <label>Title:</label>
-    <input type="text" name="title">
-    <label>Author:</label>
-    <input type="text" name="author">
-    <label>Release Year:</label>
-    <input type="number" name="releaseYear">
-    <label>Cover Art Link:</label>
-    <input type="text" name="coverURL" placeholder="Enter of a URL leading to an image of the cover">
-    <input type="submit" value="Add Book">
-  </form>
-</div>
+  <div class="container">
+    <form id="new-form" action="/books" method="POST">
+      <label>Title:</label>
+      <input type="text" name="title">
+      <label>Author:</label>
+      <input type="text" name="author">
+      <label>Release Year:</label>
+      <input type="number" name="releaseYear">
+      <label>Genre</label>
+      <select name="genre">
+        <% genre.forEach(function(g) { %>
+          <option value="<%= g._id %>">
+            <%= g.genre %>
+          </option>
+          <% }); %>
+      </select>
 
-<%- include('../partials/footer') %>
+      <label>Cover Art Link:</label>
+      <input type="text" name="coverURL" placeholder="Enter of a URL leading to an image of the cover">
+      <input type="submit" value="Add Book">
+    </form>
+  </div>
+
+  <%- include('../partials/footer') %>

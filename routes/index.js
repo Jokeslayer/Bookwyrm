@@ -1,13 +1,18 @@
 var express = require('express');
 var router = express.Router();
 const passport = require('passport');
+const Book = require('../models/book')
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
+  const books = await Book.find({});
+  books.sort((a, b) => b.rating - a.rating);
   res.render('index', {
+    best: books[0],
     title: 'Welcome to the hoard of the Bookwyrm!'
   });
 });
+
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(

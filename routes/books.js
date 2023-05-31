@@ -9,6 +9,8 @@ router.get('/', booksCtrl.index);
 
 router.get('/about', booksCtrl.about);
 
+router.get('/edit', booksCtrl.edit);
+
 router.get('/mine', booksCtrl.mine);
 
 // GET /books/new
@@ -18,5 +20,9 @@ router.get('/new', ensureLoggedIn, booksCtrl.new);
 router.post('/', ensureLoggedIn, booksCtrl.create);
 
 router.get('/:id', booksCtrl.show);
+
+router.put('/:id', booksCtrl.update);
+
+router.delete('/:id', booksCtrl.delete);
 
 module.exports = router;

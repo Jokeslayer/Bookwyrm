@@ -26,19 +26,36 @@ const reviewSchema = new Schema({
 const bookSchema = new Schema({
     title: { type: String, required: true },
     author: { type: String, required: true },
-    rating: { type: Number},
     releaseYear: {type: Number},
     coverURL: { type: String},
+    
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
     userName: String,
     userAvatar: String,
+    genre: {
+      type: Schema.Types.ObjectId,
+      ref: 'Genre',
+    },
     reviews: [reviewSchema]
   }, {
-    timestamps: true
+    timestamps: true,
+    toObject: { virtuals: true },
+    toJSON: { virtuals: true }
   });
+
+
+  bookSchema.virtual('rating')
+  .get(function () {
+    if(this.reviews.length === 0) return 0;
+    let count = 0;
+    this.reviews.forEach(function (r) {
+      count += r.rating
+    });
+    return count / this.reviews.length;
+  })
   
   // Compile the schema into a model and export it
   module.exports = mongoose.model('Book', bookSchema);

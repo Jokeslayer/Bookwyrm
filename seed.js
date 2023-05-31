@@ -3,15 +3,25 @@ require('./config/database');
 
 const Genre = require('./models/genre');
 
-// For better organization, the seed data is being stored in a separate data.js module
-const data = require('./data');
-
+const data =[
+    {genre: 'Horror'},
+    {genre: 'High Fantasy'},
+    {genre: 'Urban Fantasy'},
+    {genre: 'LitRPG'},
+    {genre: 'Xanxia'},
+    {genre: 'Romance'},
+    {genre: 'Young Adult'},
+    {genre: 'Satire'},
+    {genre: 'Non-Fiction'},
+    {genre: 'Reference'},
+    {genre: 'Sci-Fi'}
+  ];
 // await needs an async function - use an async IIFE!
 (async function() {
 
   // This time, provide the array of promises in-line
   results = await Promise.all([
-    Genre.create(data.genres),
+    Genre.create(data),
   ]);
   console.log('Created genres:', results[0]);
 

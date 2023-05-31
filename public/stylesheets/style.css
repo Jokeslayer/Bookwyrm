@@ -54,14 +54,14 @@ nav > a.active {
   cursor: default;
 }
 
-
 footer {
+  display: flex;
   position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 10%;
-  background-color: red;
+  height: 40px;
+  background-color: #631414;
   color: white;
   text-align: center;
 }
@@ -69,6 +69,8 @@ footer {
 footer > a {
   color: white;
   margin: 10px;
+  font-size: 24px;
+  text-align: center;
 }
 
 
@@ -185,4 +187,19 @@ table td {
 .rating__star {
   cursor: pointer;
   color: #dabd18b2;
+}
+
+#display{
+  width: 200px;
+  height: 30px;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
+}
+
+#show{
+  width: 90%;
+  border: 1px solid black;
+  padding: 15px;
 }
