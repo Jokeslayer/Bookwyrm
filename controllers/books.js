@@ -31,8 +31,9 @@ async function about(req, res) {
 }
 
 async function edit(req, res) {
-  const book = await Book.getOne(req.params.id);
-  res.render('books/edit', { title: 'Here I am! Rock you like a Hurricane!', book});
+  const book = await Book.findById(req.params.id);
+  const genre = await Genre.find({});
+  res.render('books/edit', { title: 'Here I am! Rock you like a Hurricane!', genre, book});
 }
 
 async function show(req, res) {
@@ -68,10 +69,22 @@ async function create(req, res) {
   }
 }
 
-function update(req,res){
-  req.body.done = !!req.body.done;
-  Book.update(req.params.id, req.body);
-  res.redirect(`/books/${req.params.id}`);
+async function update(req, res) {
+  try {
+    const updatedBook = await Book.findOneAndUpdate(
+      
+      {_id: req.params.id, user: req.user._id},
+      // update object with updated properties
+      req.body,
+      // options object {new: true} returns updated doc
+      {new: true}
+    );
+    console.log("TESTING TESTING, THIS IS AN OBNOXIOUS TESTINGT!!!!!", updatedBook)
+    return res.redirect(`/books/${updatedBook._id}`);
+  } catch (e) {
+    console.log(e.message);
+    return res.redirect('/books');
+  }
 }
 
 function deleteBook(req,res){

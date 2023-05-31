@@ -1,29 +1,42 @@
 <%- include('../partials/header') %>
-  <div id="show">
-  <section id="show-page">
-    <div id="display">Title: <%= book.title %></div>
-    <div id="display">Release Year: <%= book.releaseYear %></div>
-    <div id="display">Genre: <%= book?.genre?.genre %> </div>
-  </section>
-  
 
-  <br><br>
-  <div>
-    <h2>Reviews</h2>
-    <form id="add-review-form" method="POST" action="/books/<%= book._id %>/reviews">
-    <select name="rating">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-      <option value="4">4</option>
-      <option value="5" selected>5</option>
-    </select>
-      <textarea name="content"></textarea>
-      <input  type="submit" value="Add Review">
-    </form>
-  </div>
+<div>
+  <% if (user?._id.equals(book.user)) { %>
+    <button><a href="/books/<%= book._id %>/edit">Modify your book?</a></button>
+    <% } %>
 </div>
-  
+
+  <div id="show">
+    <section id="show-page">
+      <div id="display">Title: <%= book.title %>
+      </div>
+      <div id="display">Author: <%= book.author %>
+      </div>
+      <div id="display">Release Year: <%= book.releaseYear %>
+      </div>
+      <div id="display">Genre: <%= book?.genre?.genre %>
+      </div>
+    </section>
+
+    
+    
+    <br><br>
+    <div>
+      <h2>Reviews</h2>
+      <form id="add-review-form" method="POST" action="/books/<%= book._id %>/reviews">
+        <select name="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5" selected>5</option>
+        </select>
+        <textarea name="content"></textarea>
+        <input type="submit" value="Add Review">
+      </form>
+    </div>
+  </div>
+
   <% if (book.reviews.length) { %>
     <table>
       <thead>
@@ -45,7 +58,7 @@
                 <td>
                   <%= r.createdAt.toLocaleDateString() %>
                 </td>
-                <td>
+                <td style="white-space: pre">
                   <%= r.content %>
                 </td>
                 <td>
@@ -56,16 +69,18 @@
                     <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
                       <button type="submit">X</button>
                     </form>
-                    <% } %>
+                  <% } %>
                 </td>
               </tr>
               <% }); %>
                 <tr>
                   <td colspan="3"></td>
-                  <td><strong>
+                  <td>
+                    <strong>
                       <%= (total / book.reviews.length).toFixed(1) %>
-                      <%= book.rating %>
-                    </strong></td>
+                        <%= book.rating %>
+                    </strong>
+                  </td>
                 </tr>
       </tbody>
     </table>
