@@ -17,7 +17,6 @@ module.exports = {
 async function index(req, res) {
   const books = await Book.find({});
   books.sort((a, b) => b.rating - a.rating);
-  console.log(books);
   res.render('books/index', { title: 'Welcome to the Hoard of the Bookwyrm', books });
 }
 
@@ -37,7 +36,6 @@ async function edit(req, res) {
 }
 
 async function show(req, res) {
-  console.log(req.user);
   const book = await Book.findById(req.params.id).populate("genre");
   res.render('books/show', { title: `${book.title}`, book });
 }
@@ -53,7 +51,6 @@ async function create(req, res) {
   req.body.user = req.user._id;
   req.body.userName = req.user.name;
   req.body.userAvatar = req.user.avatar;
-  console.log(req.body);
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
   }
@@ -79,7 +76,6 @@ async function update(req, res) {
       // options object {new: true} returns updated doc
       { new: true }
     );
-    console.log("TESTING TESTING, THIS IS AN OBNOXIOUS TESTINGT!!!!!", updatedBook)
     return res.redirect(`/books/${updatedBook._id}`);
   } catch (e) {
     console.log(e.message);
@@ -88,7 +84,6 @@ async function update(req, res) {
 }
 
 function deleteBook(req, res) {
-  console.log(req.params.id);
   Book.deleteOne(req.params.id);
   res.redirect('/books');
 }
