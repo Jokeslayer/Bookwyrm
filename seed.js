@@ -3,21 +3,21 @@ require('./config/database');
 
 const Genre = require('./models/genre');
 
-const data =[
-    {genre: 'Horror'},
-    {genre: 'High Fantasy'},
-    {genre: 'Urban Fantasy'},
-    {genre: 'LitRPG'},
-    {genre: 'Xanxia'},
-    {genre: 'Romance'},
-    {genre: 'Young Adult'},
-    {genre: 'Satire'},
-    {genre: 'Non-Fiction'},
-    {genre: 'Reference'},
-    {genre: 'Sci-Fi'}
-  ];
+const data = [
+  { genre: 'Horror' },
+  { genre: 'High Fantasy' },
+  { genre: 'Urban Fantasy' },
+  { genre: 'LitRPG' },
+  { genre: 'Xanxia' },
+  { genre: 'Romance' },
+  { genre: 'Young Adult' },
+  { genre: 'Satire' },
+  { genre: 'Non-Fiction' },
+  { genre: 'Reference' },
+  { genre: 'Sci-Fi' }
+];
 // await needs an async function - use an async IIFE!
-(async function() {
+(async function () {
 
   // This time, provide the array of promises in-line
   results = await Promise.all([

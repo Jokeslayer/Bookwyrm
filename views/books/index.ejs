@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-    <table id="list">
+    <table class="list">
         <thead>
             <tr>
                 <th>Title</th>
@@ -20,7 +20,7 @@
                     <td>
                         <%= b.releaseYear %>
                     </td>
-                    <td><a href="/books/<%= b._id %>">DETAILS</a></td>
+                    <td style="border: none;"><a href="/books/<%= b._id %>">DETAILS</a></td>
                 </tr>
                 <% }); %>
         </tbody>

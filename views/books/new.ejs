@@ -2,13 +2,13 @@
 
   <div class="container">
     <form id="new-form" action="/books" method="POST">
-      <label>Title:</label>
+      <label class="display">Title:</label>
       <input type="text" name="title">
-      <label>Author:</label>
+      <label class="display">Author:</label>
       <input type="text" name="author">
-      <label>Release Year:</label>
+      <label class="display">Release Year:</label>
       <input type="number" name="releaseYear">
-      <label>Genre</label>
+      <label class="display">Genre</label>
       <select name="genre">
         <% genre.forEach(function(g) { %>
           <option value="<%= g._id %>">
@@ -17,7 +17,7 @@
           <% }); %>
       </select>
 
-      <label>Cover Art Link:</label>
+      <label class="display" type="number">Cover Art Link:</label>
       <input type="text" name="coverURL" placeholder="Enter of a URL leading to an image of the cover">
       <input type="submit" value="Add Book">
     </form>

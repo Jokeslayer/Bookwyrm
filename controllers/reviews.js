@@ -26,7 +26,7 @@ async function create(req, res) {
   req.body.user = req.user._id;
   req.body.userName = req.user.name;
   req.body.userAvatar = req.user.avatar;
-  console.log("this is the reviews controller create function: ",req.body);
+  console.log("this is the reviews controller create function: ", req.body);
   // We can push (or unshift) subdocs into Mongoose arrays
   book.reviews.push(req.body);
   try {

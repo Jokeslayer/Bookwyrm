@@ -1,5 +1,4 @@
 * {
-  box-sizing: border-box;
   font-family: Helvetica;
   color: #424748;
 }
@@ -10,12 +9,12 @@ body {
   background-color: antiquewhite;
   display: grid;
   grid-template-rows: 50px 1fr;
-  grid-template-areas: 
-  "nav"
-  "main"
+  grid-template-areas:
+    "nav"
+    "main"
 }
 
-body > nav {
+body>nav {
   grid-area: nav;
   background-color: #631414;
   display: flex;
@@ -24,49 +23,45 @@ body > nav {
   padding: 0 20px 0 30px;
 }
 
-body > main {
+body>main {
   grid-area: main;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
-  overflow-y: scroll;
 }
 
-body > main h1:first-child {
+body>main h1:first-child {
   margin-bottom: 50px;
 }
 
-nav > a {
+nav>a {
   margin: 20px;
   text-decoration: none;
   padding: 10px;
   border-radius: 5px;
 }
 
-nav > a:hover:not(.active) {
+nav>a:hover:not(.active) {
   color: white;
   background-color: #424748;
 }
 
-nav > a.active {
+nav>a.active {
   color: white;
   cursor: default;
 }
 
 footer {
-  display: flex;
-  position: relative;
-  left: 0;
-  bottom: 0;
   width: 100%;
   height: 40px;
   background-color: #631414;
   color: white;
   text-align: center;
+
 }
 
-footer > a {
+footer>a {
   color: white;
   margin: 10px;
   font-size: 24px;
@@ -74,29 +69,28 @@ footer > a {
 }
 
 
-main > h1{
+main>h1 {
   text-align: center;
   width: fit-content;
   height: fit-content;
 }
 
 
-main{
+main {
   display: flex;
   margin: 10px;
   border: 5px ridge #631414;
   padding: 10px;
 }
 
-nav > a{
+nav>a {
   color: white;
   margin: 10px;
 }
 
-#logo{
+#logo {
   border-radius: 50%;
   width: 40px;
-  margin-right: auto;
   object-fit: contain;
   align-self: left;
 }
@@ -112,27 +106,19 @@ nav > a{
   height: 30px;
 }
 
-#side{
-  border: 1px solid black;
-  width: 20%;
-  height: 20%;
-
-}
-
-#display{
-  border: 1px solid black;
-  width: 20%;
-  height: 20%;
-}
-
 #new-form {
   display: grid;
   grid-gap: 10px;
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
+#add-review-form {
+  display: flex;
+}
+
 #new-form *,
-#add-review-form *{
+#add-review-form *,
+select {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -144,7 +130,7 @@ nav > a{
   margin-left: auto;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,14 +147,15 @@ table thead th {
 
 table td {
   padding: 10px;
-  text-align: center;
+  border: 1px solid black;
 }
 
-#list td:nth-child(2), #list td:nth-child(3){
+.list td:nth-child(2),
+.list td:nth-child(3) {
   min-width: 100px;
 }
 
-#list a {
+.list a {
   border-radius: 4px;
   background-color: #B8C0C2;
   padding: 4px;
@@ -176,7 +163,7 @@ table td {
   font-size: 14px;
 }
 
-#list a:hover {
+.list a:hover {
   background-color: white;
 }
 
@@ -189,17 +176,79 @@ table td {
   color: #dabd18b2;
 }
 
-#display{
-  width: 200px;
-  height: 30px;
+.display {
+  width: auto;
+  height: auto;
   padding: 5px 0;
+  margin: 10px;
   font-size: 18px;
   font-weight: bold;
   color: black;
 }
 
-#show{
-  width: 90%;
+#show {
+  width: auto;
   border: 1px solid black;
   padding: 15px;
+  justify-content: right;
+  display: flex;
+  flex-direction: column;
+}
+
+#user-avatar {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+
+#review-section {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+#review-table-data {
+  width: auto;
+  text-align: center;
+}
+
+.book-display {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 70vh;
+  width: 90%;
+}
+
+.cover {
+  display: flex;
+  margin: 10px;
+}
+
+.cover>img {
+  margin: 0 auto;
+}
+
+#review-section {
+  margin: 20px;
+
+}
+
+#edit-button {
+  position: relative;
+  left: 84%;
+  width: 100px;
+  height: 50px;
+}
+
+#header-icon {
+  margin-right: auto;
+  padding: 0;
+}
+
+#show-page {
+  margin-top: 2rem;
+  font-size: larger;
+  font-weight: bold;
 }

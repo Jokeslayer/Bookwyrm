@@ -4,12 +4,12 @@ const Schema = mongoose.Schema;
 
 
 const genreSchema = new Schema({
-    genre: {type: String, required: true}
+  genre: { type: String, required: true }
 
-  }, {
-    timestamps: true
-  });
+}, {
+  timestamps: true
+});
 
-  
-  // Compile the schema into a model and export it
-  module.exports = mongoose.model('Genre', genreSchema);
+
+// Compile the schema into a model and export it
+module.exports = mongoose.model('Genre', genreSchema);

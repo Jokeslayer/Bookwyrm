@@ -3,7 +3,7 @@ const router = express.Router();
 // You'll be creating this controller module next
 const booksCtrl = require('../controllers/books');
 const ensureLoggedIn = require('../config/ensureLoggedIn');
-	
+
 // GET /books
 router.get('/', booksCtrl.index);
 

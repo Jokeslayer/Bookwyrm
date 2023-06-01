@@ -1,15 +1,18 @@
 <%- include('./partials/header') %>
 
 
-<div id="side">
+  <div id="cover">
+    <img src="<%= best.coverURL %>">
+  </div>
+  <section id="show-page">
+    <div id="display">Title: <%= best.title %>
+    </div>
+    <div id="display">Release Year: <%= best.releaseYear %>
+    </div>
+    <div id="display">Genre: <%= best?.genre?.genre %>
+    </div>
+  </section>
 
-    <section id="show-page">
-        <div id="display">Title: <%= best.title %></div>
-        <div id="display">Release Year: <%= best.releaseYear %></div>
-        <div id="display">Genre: <%= best?.genre?.genre %> </div>
-      </section>
-
-</div>
 
 
-<%- include('./partials/footer') %>
+  <%- include('./partials/footer') %>

@@ -1,90 +1,88 @@
 <%- include('../partials/header') %>
 
-<div>
-  <% if (user?._id.equals(book.user)) { %>
-    <button><a href="/books/<%= book._id %>/edit">Modify your book?</a></button>
-    <% } %>
-</div>
+  <div class="book-display">
+    <div class="cover">
+      <img src="<%= book.coverURL ? book.coverURL : '/images/logo.jpg' %>">
+    </div>
+    <div id="show">
+      <% if (user?._id.equals(book.user)) { %>
+        <button id="edit-button"><a href="/books/<%= book._id %>/edit">Edit Book</a></button>
+        <% } %>
+          <div class="display">Title: <%= book.title %>
+          </div>
+          <div class="display">Author: <%= book.author %>
+          </div>
+          <div class="display">Release Year: <%= book.releaseYear %>
+          </div>
+          <div class="display">Genre: <%= book?.genre?.genre %>
+          </div>
+          <div class="display">Rating: <%= book.rating %>
+          </div>
+          </section>
 
-  <div id="show">
-    <section id="show-page">
-      <div id="display">Title: <%= book.title %>
-      </div>
-      <div id="display">Author: <%= book.author %>
-      </div>
-      <div id="display">Release Year: <%= book.releaseYear %>
-      </div>
-      <div id="display">Genre: <%= book?.genre?.genre %>
-      </div>
-    </section>
 
-    
-    
-    <br><br>
-    <div>
-      <h2>Reviews</h2>
-      <form id="add-review-form" method="POST" action="/books/<%= book._id %>/reviews">
-        <select name="rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5" selected>5</option>
-        </select>
-        <textarea name="content"></textarea>
-        <input type="submit" value="Add Review">
-      </form>
+
+          <br><br>
+          <h2>Reviews</h2>
+          <form id="add-review-form" method="POST" action="/books/<%= book._id %>/reviews">
+            <select name="rating">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5" selected>5</option>
+            </select>
+            <textarea name="content" style="width: 500px; height: 60px;"></textarea>
+            <input type="submit" value="Add Review">
+          </form>
     </div>
   </div>
-
-  <% if (book.reviews.length) { %>
-    <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Date</th>
-          <th>Review</th>
-          <th>Rating</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% let total=0 %>
-          <% book.reviews.forEach(function(r) { %>
-            <% total +=r.rating %>
-              <tr>
-                <td class="review-user"><img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
-                  <%= r.userName %>
-                </td>
-                <td>
-                  <%= r.createdAt.toLocaleDateString() %>
-                </td>
-                <td style="white-space: pre">
-                  <%= r.content %>
-                </td>
-                <td>
-                  <%= r.rating %>
-                </td>
-                <td>
-                  <% if (user?._id.equals(r.user)) { %>
-                    <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
-                      <button type="submit">X</button>
-                    </form>
-                  <% } %>
-                </td>
-              </tr>
-              <% }); %>
+  <div id="review-section">
+    <% if (book.reviews.length) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Date</th>
+            <th>Review</th>
+            <th>Rating</th>
+          </tr>
+        </thead>
+        <tbody id="show-table">
+          <% let total=0 %>
+            <% book.reviews.forEach(function(r) { %>
+              <% total +=r.rating %>
                 <tr>
-                  <td colspan="3"></td>
+                  <td id="review-table-data"><img id="user-avatar" alt="avatar" src="<%= r.userAvatar %>"
+                      referrerpolicy="no-referrer">
+                  </td>
+                  <td id="review-table-data">
+                    <%= r.createdAt.toLocaleDateString() %>
+                  </td>
                   <td>
-                    <strong>
-                      <%= (total / book.reviews.length).toFixed(1) %>
-                        <%= book.rating %>
-                    </strong>
+                    <%= r.content %>
+                  </td>
+                  <td id="review-table-data">
+                    <%= r.rating %>
+                  </td>
+                  <td id="review-table-data" style="border: none;">
+                    <% if (user?._id.equals(r.user)) { %>
+                      <form action="/reviews/<%= r._id %>?_method=DELETE" method="POST">
+                        <button type="submit">X</button>
+                      </form>
+                      <% } %>
                   </td>
                 </tr>
-      </tbody>
-    </table>
-    <% } else { %>
-      <h5>No Reviews Yet</h5>
-      <% } %>
-        <%- include('../partials/footer') %>
+                <% }); %>
+                  <tr>
+                    <td colspan="3" style="border: none;"></td>
+                    <td style="border: none;">
+                    </td>
+                  </tr>
+        </tbody>
+      </table>
+      <% } else { %>
+        <h5>No Reviews Yet</h5>
+        <% } %>
+  </div>
+  <%- include('../partials/footer') %>

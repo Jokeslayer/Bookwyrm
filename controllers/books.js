@@ -18,28 +18,28 @@ async function index(req, res) {
   const books = await Book.find({});
   books.sort((a, b) => b.rating - a.rating);
   console.log(books);
-  res.render('books/index', { title: 'Welcome to the Hoard of the Bookwyrm',books});
+  res.render('books/index', { title: 'Welcome to the Hoard of the Bookwyrm', books });
 }
 
 async function mine(req, res) {
-  const books = await Book.find({user: req.user._id});
-  res.render('books/mine', { title: 'Here is your section',books});
+  const books = await Book.find({ user: req.user._id });
+  res.render('books/mine', { title: 'Here is your section', books });
 }
 
 async function about(req, res) {
-  res.render('books/about', { title: 'Here I am! Rock you like a Hurricane!'});
+  res.render('books/about', { title: 'Here I am! Rock you like a Hurricane!' });
 }
 
 async function edit(req, res) {
   const book = await Book.findById(req.params.id);
   const genre = await Genre.find({});
-  res.render('books/edit', { title: 'Here I am! Rock you like a Hurricane!', genre, book});
+  res.render('books/edit', { title: 'Please be careful with my collection', genre, book });
 }
 
 async function show(req, res) {
   console.log(req.user);
   const book = await Book.findById(req.params.id).populate("genre");
-  res.render('books/show', { title: `${book.title}`, book});
+  res.render('books/show', { title: `${book.title}`, book });
 }
 
 async function newBook(req, res) {
@@ -57,7 +57,7 @@ async function create(req, res) {
   for (let key in req.body) {
     if (req.body[key] === '') delete req.body[key];
   }
-  
+
   try {
     // Update this line because now we need the _id of the new book
     const book = await Book.create(req.body);
@@ -65,19 +65,19 @@ async function create(req, res) {
   } catch (err) {
     // Typically some sort of validation error
     console.log(err);
-    res.render('books/new', {title: 'Wait, Something is wrong!', errorMsg: err.message });
+    res.render('books/new', { title: 'Wait, Something is wrong!', errorMsg: err.message });
   }
 }
 
 async function update(req, res) {
   try {
     const updatedBook = await Book.findOneAndUpdate(
-      
-      {_id: req.params.id, user: req.user._id},
+
+      { _id: req.params.id, user: req.user._id },
       // update object with updated properties
       req.body,
       // options object {new: true} returns updated doc
-      {new: true}
+      { new: true }
     );
     console.log("TESTING TESTING, THIS IS AN OBNOXIOUS TESTINGT!!!!!", updatedBook)
     return res.redirect(`/books/${updatedBook._id}`);
@@ -87,7 +87,7 @@ async function update(req, res) {
   }
 }
 
-function deleteBook(req,res){
+function deleteBook(req, res) {
   console.log(req.params.id);
   Book.deleteOne(req.params.id);
   res.redirect('/books');
