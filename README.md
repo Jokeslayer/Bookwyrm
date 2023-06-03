@@ -1,9 +1,10 @@
-# <BOOKWYRM>
+# PROJECT 2: THE VERY HUNGRY BOOKWYRM
+
 I love to read, and I created this website so that people could share their favorite books, and their thoughts on said books, online.
 
 # Screenshot
 
-<img src="images/screenshot.png">
+<img src="/images/screenshot.png">
 
 # Technologies Used
 
@@ -16,6 +17,7 @@ I love to read, and I created this website so that people could share their favo
 # Getting Started
 
 <a href="wire_frame.png">Planning</a>
+<a href="https://trello.com/b/MZxdD0vw/bookwyrm">My Trello Board</a>
 <a href="https://very-hungry-bookwyrm.herokuapp.com/">View NOW!</a>
 
 # Next Steps
