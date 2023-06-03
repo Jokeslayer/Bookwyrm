@@ -16,7 +16,7 @@ I love to read, and I created this website so that people could share their favo
 
 # Getting Started
 
-<a href="wire_frame.png">Planning</a>
+<a href="/images/wire_frame.png">Planning</a>
 <a href="https://trello.com/b/MZxdD0vw/bookwyrm">My Trello Board</a>
 <a href="https://very-hungry-bookwyrm.herokuapp.com/">View NOW!</a>
 
