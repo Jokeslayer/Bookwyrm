@@ -4,7 +4,7 @@ I love to read, and I created this website so that people could share their favo
 
 # Screenshot
 
-<img src="/images/screenshot.png">
+<img src="public/images/screenshot.png">
 
 # Technologies Used
 
@@ -16,7 +16,7 @@ I love to read, and I created this website so that people could share their favo
 
 # Getting Started
 
-<a href="/images/wire_frame.png">Planning</a> <br>
+<a href="public/images/wire_frame.png">Planning</a> <br>
 <a href="https://trello.com/b/MZxdD0vw/bookwyrm">My Trello Board</a> <br>
 <a href="https://very-hungry-bookwyrm.herokuapp.com/">View NOW!</a> <br>
 
